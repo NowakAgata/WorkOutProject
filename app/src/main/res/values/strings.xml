@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">WorkOutProject</string>
+    <string name="LogoImgView">imgViewLogo</string>
+    <string name="autofillLogin">Wpisz login...</string>
+    <string name="autofillPassword">Wpisz hasło...</string>
+    <string name="register">Zarejestruj się</string>
+    <string name="login">Zaloguj się</string>
+    <string name="introTxt">bla bla bla witamy bla</string>
+    <string name="newLogin">Wpisz login...</string>
+    <string name="newPassword">Wpisz hasło...</string>
+    <string name="newName">Wpisz imię...</string>
+    <string name="newWeight">Wpisz aktualną wagę  [kg]...</string>
+    <string name="newHeight">Wpisz wzrost [cm]...</string>
+    <string name="newGoal">Wpisz swój cel [kg]...</string>
+    <string name="submit">POTWIERDŹ</string>
+    <string name="newPassword2">Potwierdź hasło...</string>
+
+
+    <string name="excerField">Lista ćwiczeń</string>
+    <string name="trainField">Lista treningów</string>
+    <string name="statsField">Statystyki</string>
+    <string name="hello">Witamy w aplikacji xxx!</string>
+    <string name="profField">Twój profil</string>
+    <string name="randField">Losowe ćwiczenie na dziś</string>
+    <string name="enterDurationTxt">Wpisz czas trwania ćwiczenia:</string>
+    <string name="exerciseName">Nazwa wybranego ćwiczenia</string>
+    <string name="welcomeYou">Cześć! Oto widok Twojego profilu:</string>
+
+    <array name="body_parts">
+        <item>Plecy</item>
+        <item>Klata</item>
+        <item>Barki</item>
+        <item>Pośladki</item>
+        <item>Nogi</item>
+        <item>Biceps</item>
+        <item>Triceps</item>
+        <item>Brzuch</item>
+    </array>
+
+    <string-array name="week_days">
+        <item>Poniedziałek</item>
+        <item>Wtorek</item>
+        <item>Środa</item>
+        <item>Czwartek</item>
+        <item>Piątek</item>
+        <item>Sobota</item>
+        <item>Niedziela</item>
+    </string-array>
+
+    <string-array name="workout_details">
+        <item>Powtórzenia</item>
+        <item>Czas trwania</item>
+    </string-array>
+
+</resources>

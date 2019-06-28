@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.workoutproject">
+
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".training_view_activity"></activity>
+        <activity android:name=".training_workout_details_activity" />
+        <activity android:name=".new_training_activity" />
+        <activity android:name=".workout_view_activity" />
+        <activity android:name=".one_part_exercises_list" />
+        <activity android:name=".new_excercise_activity" />
+        <activity android:name=".random_exercise_activity" />
+        <activity android:name=".profile_settings_activity" />
+        <activity android:name=".statistics_activity" />
+        <activity android:name=".trainings_list_activity" />
+        <activity android:name=".exercises_list_activity" />
+        <activity android:name=".new_user" />
+        <activity android:name=".Logging_activity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

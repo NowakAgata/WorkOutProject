@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "926638218589",
+    "firebase_url": "https://workout-buddy-db77d.firebaseio.com",
+    "project_id": "workout-buddy-db77d",
+    "storage_bucket": "workout-buddy-db77d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926638218589:android:63dac8bb5646c633",
+        "android_client_info": {
+          "package_name": "com.example.workoutbuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926638218589-t893rqfh8ppau3rpphphfr0r4bjnuv9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdUspzUBBtyQCGwISoIatdEc1zkqfgDLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926638218589-t893rqfh8ppau3rpphphfr0r4bjnuv9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926638218589:android:f41eca9e90759406",
+        "android_client_info": {
+          "package_name": "com.example.workoutproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926638218589-3leaotcd0vnlbf8gk90hgklfi6b43gmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.workoutproject",
+            "certificate_hash": "efea0530fcc4339406db6232b50bbd243576b720"
+          }
+        },
+        {
+          "client_id": "926638218589-t893rqfh8ppau3rpphphfr0r4bjnuv9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdUspzUBBtyQCGwISoIatdEc1zkqfgDLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926638218589-t893rqfh8ppau3rpphphfr0r4bjnuv9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
