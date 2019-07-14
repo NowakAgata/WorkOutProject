@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class workout_view_activity extends AppCompatActivity {
+public class WorkoutViewActivity extends AppCompatActivity {
 
     ImageView img ;
     TextView nameView, partView;
     String workoutName, workoutPart ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

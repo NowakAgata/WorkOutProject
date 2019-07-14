@@ -1,35 +1,35 @@
 package com.example.workoutproject;
 
-public class Training_workout {
+public class TrainingWorkout {
 
-    private String traininWorkoutName ;
+    private String trainingWorkoutName;
     private int series ;
     private int repetities ;
     private int duration ;
 
-    public Training_workout(String workout, int series, int repetities){
-        this.traininWorkoutName = workout;
+    public TrainingWorkout(String workout, int series, int repetities){
+        this.trainingWorkoutName = workout;
         this.series = series;
         this.repetities = repetities;
         this.duration = 0;
     }
 
-    public Training_workout(String workout, int duration){
-        this.traininWorkoutName = workout;
+    public TrainingWorkout(String workout, int duration){
+        this.trainingWorkoutName = workout;
         this.series = 0;
         this.repetities = 0;
         this.duration = duration;
     }
-    public Training_workout(){
+    public TrainingWorkout(){
 
     }
 
-    public String getTraininWorkoutName() {
-        return traininWorkoutName;
+    public String getTrainingWorkoutName() {
+        return trainingWorkoutName;
     }
 
-    public void setTraininWorkoutName(String traininWorkoutName) {
-        this.traininWorkoutName = traininWorkoutName;
+    public void setTrainingWorkoutName(String trainingWorkoutName) {
+        this.trainingWorkoutName = trainingWorkoutName;
     }
 
     public int getSeries() {

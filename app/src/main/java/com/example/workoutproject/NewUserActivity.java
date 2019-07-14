@@ -9,16 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 
-public class new_user extends AppCompatActivity {
+public class NewUserActivity extends AppCompatActivity {
 
     String PREFERENCES_NAME = "myPreferences" ;
     String PREFERENCES_TEXT_LOGGED = "text" ;
     SharedPreferences prefs ;
 
-    private DatabaseReference mDatabase ;
+    private DatabaseReference userRef ;
     TextView txtLogin, txtPassword, txtPassword2, txtName, txtWeight, txtHeight, txtGoal;
     String login, password, password2, name, weightStr, heightStr, goalStr;
     int weight, height, goal;
@@ -28,7 +27,7 @@ public class new_user extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+        userRef= ApplicationClass.mDatabase.getReference().child("users");
         txtLogin = findViewById(R.id.newLogin);
         txtPassword = findViewById(R.id.newPassword);
         txtPassword2 = findViewById(R.id.newPassword2);
@@ -67,9 +66,9 @@ public class new_user extends AppCompatActivity {
         } else if(!isLoginValid(login)){
             Toast.makeText(getApplicationContext(), "Try to enter a different login", Toast.LENGTH_SHORT).show();
         } else {
-            user person = new user(login, password, name, weight, height, goal, BMI);
-            mDatabase.push().setValue(person);
-            Toast.makeText(getApplicationContext(), "new user added succesfully", Toast.LENGTH_SHORT).show();
+            User person = new User(login, password, name, weight, height, goal, BMI);
+            userRef.push().setValue(person);
+            Toast.makeText(getApplicationContext(), "new User added succesfully", Toast.LENGTH_SHORT).show();
             setLoggedUser(login);
             finish();
         }
@@ -81,11 +80,11 @@ public class new_user extends AppCompatActivity {
         prefs = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(PREFERENCES_TEXT_LOGGED, value);
-        editor.commit();
+        editor.apply();
     }
 
     public boolean isLoginValid(String temp){
-        for(user currentUser : Logging_activity.userList){
+        for(User currentUser : Logging_activity.userList){
             if( temp.equals(currentUser.getLogin())){
                 return false;
             }

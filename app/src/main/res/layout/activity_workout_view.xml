@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".workout_view_activity">
+    android:background="@color/mainBackground"
+    tools:context=".WorkoutViewActivity">
 
     <ImageView
         android:id="@+id/exerciseImgView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:src="@drawable/aparat"
+        android:layout_margin="8dp"
+        android:src="@drawable/sztangielki"
         android:layout_gravity="center"
         />
 

@@ -10,9 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,19 +19,20 @@ public class MainActivity extends AppCompatActivity {
 
     String PREFERENCES_NAME = "myPreferences" ;
     String PREFERENCES_TEXT_LOGGED = "text" ;
+    String NOT_LOGGED_TEXT = ";not_logged;" ;
     SharedPreferences prefs ;
 
     private static int LOGIN_ACTIVITY_REQUEST_CODE = 1;
-    private static int EXERCISE_LIST_ACTIVITY_REQUEST = 2;
-    private static int TRAINING_LIST_ACTIVITY_REQUEST = 3;
-    private static int STATISTICS_ACTIVITY_REQUEST = 4;
-    private static int PROFILE_ACTIVITY_REQUEST = 5;
-    private static int RANDOM_EXCERCISE_REQUEST = 6;
+    int EXERCISE_LIST_ACTIVITY_REQUEST = 2;
+    int TRAINING_LIST_ACTIVITY_REQUEST = 3;
+    int STATISTICS_ACTIVITY_REQUEST = 4;
+    int PROFILE_ACTIVITY_REQUEST = 5;
+    int RANDOM_EXCERCISE_REQUEST = 6;
 
 
     TextView helloTxtView;
     ImageView test;
-    private String login ;
+    public static String login ;
     public static boolean isLogged = false;
 
 
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         helloTxtView = findViewById(R.id.hello);
-        test = findViewById(R.id.tempImgView);
         prefs = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
 
 
@@ -52,77 +51,49 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Logging_activity.class);
             startActivityForResult(intent, LOGIN_ACTIVITY_REQUEST_CODE);
         } else {
-            String a = "Hello " + login;
-            helloTxtView.setText(a);
+            setWelcomeTxt();
         }
 
     }
     //Checking if anybody is logged to the application
-    //login = current user login;
+    //login = current User login;
     private void getLogged() {
-        login = prefs.getString(PREFERENCES_TEXT_LOGGED, "");
-        isLogged = !(login == "");
-
+        login = prefs.getString(PREFERENCES_TEXT_LOGGED, NOT_LOGGED_TEXT);
+        isLogged = !(login.equals(NOT_LOGGED_TEXT));
     }
-
+    private void setWelcomeTxt(){
+        if(isLogged){
+            String a = "Cześć " + login;
+            helloTxtView.setText(a);
+        } else{
+            String a = "Nie jesteś zalogowany! Udaj się do widoku profilu!" ;
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == LOGIN_ACTIVITY_REQUEST_CODE){
-            getLogged();
-            if(!login.equals("")){
-                String a = "Hello " + login;
-                helloTxtView.setText(a);
-            }
+        if(requestCode == LOGIN_ACTIVITY_REQUEST_CODE || requestCode == PROFILE_ACTIVITY_REQUEST){
+           setWelcomeTxt();
         }
     }
 
     public void exerOnclick(View view) {
-        Intent intent = new Intent(getApplicationContext(), exercises_list_activity.class);
+        Intent intent = new Intent(getApplicationContext(), ListOfExercisesActivity.class);
         startActivityForResult(intent,  EXERCISE_LIST_ACTIVITY_REQUEST);
     }
 
 
     public void trainOnClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), trainings_list_activity.class);
+        Intent intent = new Intent(getApplicationContext(), ListOfTrainingsActivity.class);
         startActivityForResult(intent, TRAINING_LIST_ACTIVITY_REQUEST);
     }
 
-    public void statsOnClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), statistics_activity.class);
-        startActivityForResult(intent, STATISTICS_ACTIVITY_REQUEST);
-    }
-
     public void profOnclick(View view) {
-        Intent intent = new Intent(getApplicationContext(), profile_settings_activity.class);
+        Intent intent = new Intent(getApplicationContext(), ProfileSettingsActivity.class);
         startActivityForResult(intent, PROFILE_ACTIVITY_REQUEST);
     }
 
-    public void randOnClick(View view) {
-        Intent intent = new Intent(getApplicationContext(), random_exercise_activity.class);
-        startActivityForResult(intent, RANDOM_EXCERCISE_REQUEST);
-    }
 
-//    public void downloadPhotos(){
-//        mStorageRef = mStorage.getInstance().getReference();
-//        ref = mStorageRef.child("images/temp_logo.jpg");
-//        final File tempFile = new File("images", "jpg");
-//
-//
-//        ref.getFile(tempFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-//                Uri uri = taskSnapshot.getStorage();
-//                test.setImageURI();
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//
-//            }
-//        });
-//
-//
-//    }
+
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".profile_settings_activity">
+    android:background="@color/mainBackground"
+    tools:context=".ProfileSettingsActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -51,23 +52,28 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_weight="1"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
         >
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="OK"
+            android:text="@string/ok"
             android:onClick="okButton"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@color/row_background"/>
 
         <Button
+            android:id="@+id/loggOffButton"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_weight="1"
+            android:layout_gravity="center"
             android:onClick="loggOutButton"
-            android:text="WYLOGUJ SIĘ" />
+            android:text="@string/log_off"
+            android:background="@color/mainBackground"/>
     </LinearLayout>
 
 </LinearLayout>

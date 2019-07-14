@@ -7,9 +7,9 @@ public class Training {
     private String userLogin ;
     private String trainingName ;
     private String day ;
-    private ArrayList<Training_workout> list;
+    private ArrayList<TrainingWorkout> list;
 
-    public Training(String userLog,String name, String day, ArrayList<Training_workout> list) {
+    public Training(String userLog,String name, String day, ArrayList<TrainingWorkout> list) {
         this.userLogin = userLog;
         this.trainingName = name;
         this.day = day;
@@ -38,7 +38,7 @@ public class Training {
         this.userLogin = userLogin;
     }
 
-    public void addExercise(Training_workout workout){
+    public void addExercise(TrainingWorkout workout){
         list.add(workout);
     }
 
@@ -58,11 +58,11 @@ public class Training {
         this.day = day;
     }
 
-    public ArrayList<Training_workout> getList() {
+    public ArrayList<TrainingWorkout> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Training_workout> list) {
+    public void setList(ArrayList<TrainingWorkout> list) {
         this.list = list;
     }
 }

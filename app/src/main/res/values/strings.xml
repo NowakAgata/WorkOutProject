@@ -14,17 +14,29 @@
     <string name="newGoal">Wpisz swój cel [kg]...</string>
     <string name="submit">POTWIERDŹ</string>
     <string name="newPassword2">Potwierdź hasło...</string>
-
-
-    <string name="excerField">Lista ćwiczeń</string>
-    <string name="trainField">Lista treningów</string>
-    <string name="statsField">Statystyki</string>
-    <string name="hello">Witamy w aplikacji xxx!</string>
-    <string name="profField">Twój profil</string>
-    <string name="randField">Losowe ćwiczenie na dziś</string>
+    <string name="excerField">Lista ćwiczeń           </string>
+    <string name="trainField">Lista treningów         </string>
+    <string name="profField" >Twój profil             </string>
+    <string name="randField" >Losowe ćwiczenie na dziś</string>
+    <string name="hello">Witamy w aplikacji!</string>
     <string name="enterDurationTxt">Wpisz czas trwania ćwiczenia:</string>
     <string name="exerciseName">Nazwa wybranego ćwiczenia</string>
+    <string name="trainingName">Nazwa wybranego treningu</string>
     <string name="welcomeYou">Cześć! Oto widok Twojego profilu:</string>
+    <string name="log_on">ZALOGUJ SIĘ</string>
+    <string name="log_off">WYLOGUJ SIĘ</string>
+    <string name="not_logged">Nie jesteś zalogowany!</string>
+    <string name="ok">OK</string>
+    <string name="start">START</string>
+    <string name="done">skończone!</string>
+    <string name="end">KONIEC</string>
+    <string name="start_training">Naciśnij start.</string>
+    <string name="next">DALEJ</string>
+    <string name="end_of_training">Trening skończony, brawo!</string>
+    <string name="seriesOrDuration">Wybierz, czy robisz to ćwiczenie seriami, czy na czas?</string>
+    <string name="series">Wpisz ilość serii...</string>
+    <string name="seriesHint">Wpisz ilość powtórzeń w serii:</string>
+    <string name="add">DODAJ</string>
 
     <array name="body_parts">
         <item>Plecy</item>
@@ -35,6 +47,7 @@
         <item>Biceps</item>
         <item>Triceps</item>
         <item>Brzuch</item>
+        <item>Cardio</item>
     </array>
 
     <string-array name="week_days">

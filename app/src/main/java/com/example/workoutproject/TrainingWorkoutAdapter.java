@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TrainingWorkoutAdapter extends  RecyclerView.Adapter<TrainingWorkoutAdapter.ViewHolder> {
 
-    private ArrayList<Training_workout> workouts ;
+    private ArrayList<TrainingWorkout> workouts ;
     private Context thisContext ;
 
-public TrainingWorkoutAdapter(Context context, ArrayList<Training_workout> list){
+public TrainingWorkoutAdapter(Context context, ArrayList<TrainingWorkout> list){
         workouts= list;
         thisContext = context;
         }
@@ -25,7 +25,6 @@ public TrainingWorkoutAdapter(Context context, ArrayList<Training_workout> list)
 public class ViewHolder extends RecyclerView.ViewHolder
 {
     TextView txtName ;
-    ImageView picView;
     public ViewHolder(@NonNull final View itemView){
         super(itemView);
         txtName = itemView.findViewById(R.id.trainingExerciseRowTextView);
@@ -42,11 +41,9 @@ public class ViewHolder extends RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull TrainingWorkoutAdapter.ViewHolder holder, int position) {
 
-        holder.itemView.setTag(position);
 
-        Training_workout temp = workouts.get(position) ;
 
-        holder.txtName.setText(temp.getTraininWorkoutName());
+        holder.txtName.setText(workouts.get(position).getTrainingWorkoutName());
 
 
 

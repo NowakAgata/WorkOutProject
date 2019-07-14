@@ -1,11 +1,11 @@
 package com.example.workoutproject;
 
-public class bodyPart {
+public class BodyPart {
 
     private String name ;
     private int pic ;
 
-    public bodyPart(String name, int pic){
+    public BodyPart(String name, int pic){
         this.name = name ;
         this.pic = pic ;
     }

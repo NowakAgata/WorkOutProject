@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".one_part_exercises_list">
+    tools:context=".ListOfOnePartExercisesActivity"
+    android:background="@color/mainBackground">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/OnePartListView"

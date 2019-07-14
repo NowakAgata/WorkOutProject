@@ -14,8 +14,9 @@ import androidx.annotation.NonNull;
 
 public class ApplicationClass extends Application {
 
-    private FirebaseDatabase mDatabase ;
+    static public FirebaseDatabase mDatabase ;
     static public DatabaseReference refExercises;
+    public static DatabaseReference refUsers;
     public static DatabaseReference refTrainings;
 
     public static ArrayList<Training> trainings;
@@ -27,8 +28,10 @@ public class ApplicationClass extends Application {
     public static ArrayList<Workout> bicepsList;
     public static ArrayList<Workout> tricepsList;
     public static ArrayList<Workout> absList;
+    public static ArrayList<Workout> cardio;
     public static ArrayList<Workout> workoutsList;
 
+    public static ArrayList<User> userList ;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -42,15 +45,28 @@ public class ApplicationClass extends Application {
         tricepsList = new ArrayList<>();
         absList = new ArrayList<>();
         workoutsList = new ArrayList<>();
+        userList = new ArrayList<>();
         trainings = new ArrayList<>();
+        cardio = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance();
         refExercises = mDatabase.getReference().child("workouts");
+        refUsers = mDatabase.getReference().child("users");
         refTrainings = mDatabase.getReference().child("trainings");
 
         refExercises.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                backList.clear();
+                chestList.clear();
+                shoulderList.clear();
+                glutesList.clear();
+                legList.clear();
+                bicepsList.clear();
+                tricepsList.clear();
+                absList.clear();
+                workoutsList.clear();
+                cardio.clear();
                 for(DataSnapshot workoutSnapshot : dataSnapshot.getChildren()){
                     Workout current = workoutSnapshot.getValue(Workout.class);
                     String part = current.getBodyPart();
@@ -88,6 +104,10 @@ public class ApplicationClass extends Application {
                             absList.add(current);
                             workoutsList.add(current);
                             break ;
+                        case "Cardio":
+                            cardio.add(current);
+                            workoutsList.add(current);
+                            break;
                         default:
                             workoutsList.add(current);
                             break;
@@ -102,14 +122,30 @@ public class ApplicationClass extends Application {
             }
         });
 
-        refTrainings.addValueEventListener(new ValueEventListener() {
+        refUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userList.clear();
+                for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
+                    userList.add(userSnapshot.getValue(User.class)) ;
 
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        refTrainings.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                trainings.clear();
                 for(DataSnapshot workoutSnapshot : dataSnapshot.getChildren()){
-                    Training current = workoutSnapshot.getValue(Training.class);
-                    trainings.add(current) ;
-                    }
+                    trainings.add(workoutSnapshot.getValue(Training.class)) ;
+                }
             }
 
             @Override

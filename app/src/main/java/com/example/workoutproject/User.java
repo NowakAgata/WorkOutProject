@@ -1,6 +1,6 @@
 package com.example.workoutproject;
 
-public class user {
+public class User {
 
     private String login;
     private String password;
@@ -10,10 +10,10 @@ public class user {
     private int weight_goal;
     private double BMI;
 
-    public user() {
+    public User() {
     }
 
-    public user(String login, String password, String name, int weight, int height, int weight_goal, double BMI) {
+    public User(String login, String password, String name, int weight, int height, int weight_goal, double BMI) {
         this.login = login;
         this.password = password;
         this.name = name;

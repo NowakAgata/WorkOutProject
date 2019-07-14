@@ -14,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class training_workout_details_activity extends AppCompatActivity {
+public class TrainingWorkoutDetailsActivity extends AppCompatActivity {
 
 
     Spinner spinner;

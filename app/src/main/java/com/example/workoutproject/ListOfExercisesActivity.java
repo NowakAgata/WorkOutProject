@@ -8,18 +8,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class exercises_list_activity extends AppCompatActivity {
+public class ListOfExercisesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    BodypartsAdapter bodypartsAdapter ;
+    BodyPartsAdapter bodypartsAdapter ;
     RecyclerView.LayoutManager layoutManager;
 
-    ArrayList<bodyPart> bodyPartList;
+    ArrayList<BodyPart> bodyPartList;
     //jezeli flag==1 to znaczy, że przyszliśmy z dodawania treningu
     //a jezeli ==0, to po prostu wyświetlamy te ćwiczenia
     int flag ;
@@ -33,15 +32,17 @@ public class exercises_list_activity extends AppCompatActivity {
         flag = i.getIntExtra("TRAINING_LIST", 0);
 
         bodyPartList = new ArrayList<>() ;
-        bodyPartList.add( new bodyPart(" Plecy            ", R.drawable.plecy));
-        bodyPartList.add( new bodyPart(" Klatka piersiowa ", R.drawable.klata));
-        bodyPartList.add( new bodyPart(" Barki            ", R.drawable.barki));
-        bodyPartList.add( new bodyPart(" Pośladki         ", R.drawable.posladki));
-        bodyPartList.add( new bodyPart(" Nogi             ", R.drawable.nogi));
-        bodyPartList.add( new bodyPart(" Biceps           ", R.drawable.biceps));
-        bodyPartList.add( new bodyPart(" Triceps          ", R.drawable.triceps));
-        bodyPartList.add( new bodyPart(" Brzuch           ", R.drawable.brzuch));
-        bodyPartList.add( new bodyPart(" Wszystkie        ", R.drawable.kettle));
+        bodyPartList.add( new BodyPart(" Plecy            ", R.drawable.plecy));
+        bodyPartList.add( new BodyPart(" Klatka piersiowa ", R.drawable.klata));
+        bodyPartList.add( new BodyPart(" Barki            ", R.drawable.barki));
+        bodyPartList.add( new BodyPart(" Pośladki         ", R.drawable.posladki));
+        bodyPartList.add( new BodyPart(" Nogi             ", R.drawable.nogi));
+        bodyPartList.add( new BodyPart(" Biceps           ", R.drawable.biceps));
+        bodyPartList.add( new BodyPart(" Triceps          ", R.drawable.triceps));
+        bodyPartList.add( new BodyPart(" Brzuch           ", R.drawable.brzuch));
+        bodyPartList.add( new BodyPart(" Cardio           ", R.drawable.cardio));
+        bodyPartList.add( new BodyPart(" Wszystkie        ", R.drawable.sztangielki));
+
 
         recyclerView = findViewById(R.id.BodyPartsListView);
         recyclerView.setHasFixedSize(true);
@@ -49,21 +50,21 @@ public class exercises_list_activity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        bodypartsAdapter = new BodypartsAdapter(this, bodyPartList);
+        bodypartsAdapter = new BodyPartsAdapter(this, bodyPartList);
         recyclerView.setAdapter(bodypartsAdapter);
 
 
     }
 
     public void addNewExercise(View view) {
-        Intent intent = new Intent(getApplicationContext(), new_excercise_activity.class);
+        Intent intent = new Intent(getApplicationContext(), NewExerciseAcitivity.class);
         startActivityForResult(intent, 1);
     }
 
     public void onBodyPartClick(View view) {
         int position = (int) view.getTag();
         String part = bodyPartList.get(position).getName();
-        Intent intent = new Intent(getApplicationContext(), one_part_exercises_list.class);
+        Intent intent = new Intent(getApplicationContext(), ListOfOnePartExercisesActivity.class);
         intent.putExtra("BODY_PART", part);
         intent.putExtra("FLAG", flag) ;
         startActivityForResult(intent, 2);
@@ -100,6 +101,6 @@ public class exercises_list_activity extends AppCompatActivity {
         }
 
 
-        //TODO: if(requestCode == 1) notifyDataSetChange ;
+
     }
 }

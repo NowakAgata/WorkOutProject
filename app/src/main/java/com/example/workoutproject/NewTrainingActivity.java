@@ -17,11 +17,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class new_training_activity extends AppCompatActivity {
+public class NewTrainingActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase ;
 
@@ -29,7 +28,7 @@ public class new_training_activity extends AppCompatActivity {
     Spinner daysSpinner ;
     ArrayAdapter<CharSequence> adapter;
     String newTrainingName, newTrainingDay;
-    ArrayList<Training_workout> newTrainingList ;
+    ArrayList<TrainingWorkout> newTrainingList ;
     Training newTraining ;
     RecyclerView recyclerView;
     TrainingWorkoutAdapter trainingWorkoutAdapter ;
@@ -59,9 +58,10 @@ public class new_training_activity extends AppCompatActivity {
         trainingWorkoutAdapter = new TrainingWorkoutAdapter(this, newTrainingList);
         recyclerView.setAdapter(trainingWorkoutAdapter);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("trainings");
-
         prefs = getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+
+
+        mDatabase = ApplicationClass.mDatabase.getReference().child("trainings");
 
         daysSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -84,7 +84,7 @@ public class new_training_activity extends AppCompatActivity {
             Toast.makeText(this, "Lista ćwiczeń jest pusta, dodaj conajmniej jedno ćwiczenie", Toast.LENGTH_SHORT).show();
         } else{
             newTrainingName = trainingNameEdit.getText().toString();
-            String login = prefs.getString(PREFERENCES_TEXT_LOGGED, "user");
+            String login = prefs.getString(PREFERENCES_TEXT_LOGGED, "User");
 
 
             newTraining = new Training(login,newTrainingName,newTrainingDay,newTrainingList );
@@ -96,7 +96,7 @@ public class new_training_activity extends AppCompatActivity {
 
 
     public void addExerciseToTraining(View view) {
-        Intent i = new Intent(getApplicationContext(), exercises_list_activity.class );
+        Intent i = new Intent(getApplicationContext(), ListOfExercisesActivity.class );
         i.putExtra("TRAINING_LIST", 1);
         startActivityForResult(i, 1);
     }
@@ -110,12 +110,12 @@ public class new_training_activity extends AppCompatActivity {
                 int series = data.getIntExtra("SERIES", 3);
                 int repetities = data.getIntExtra("REPETITIES", 12) ;
                 String selectedWorkoutName = data.getStringExtra("WORKOUT");
-                newTrainingList.add(new Training_workout(selectedWorkoutName, series, repetities));
+                newTrainingList.add(new TrainingWorkout(selectedWorkoutName, series, repetities));
                 trainingWorkoutAdapter.notifyDataSetChanged();
             } else if(temp == 1){
                 int duration = data.getIntExtra("DURATION", 30);
                 String selectedWorkoutName = data.getStringExtra("WORKOUT");
-                newTrainingList.add(new Training_workout(selectedWorkoutName, duration));
+                newTrainingList.add(new TrainingWorkout(selectedWorkoutName, duration));
                 trainingWorkoutAdapter.notifyDataSetChanged();
             }
         }

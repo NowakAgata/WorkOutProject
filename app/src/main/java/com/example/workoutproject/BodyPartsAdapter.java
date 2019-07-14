@@ -4,24 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BodypartsAdapter extends RecyclerView.Adapter<BodypartsAdapter.ViewHolder> {
+public class BodyPartsAdapter extends RecyclerView.Adapter<BodyPartsAdapter.ViewHolder> {
 
-    private ArrayList<bodyPart> parts ;
+    private ArrayList<BodyPart> parts ;
     private Context thisContext ;
 
-    public BodypartsAdapter(Context context, ArrayList<bodyPart> list){
+    public BodyPartsAdapter(Context context, ArrayList<BodyPart> list){
         parts = list;
         thisContext = context;
     }
@@ -39,17 +35,17 @@ public class BodypartsAdapter extends RecyclerView.Adapter<BodypartsAdapter.View
 
     @NonNull
     @Override
-    public BodypartsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BodyPartsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.body_parts_row, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BodypartsAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BodyPartsAdapter.ViewHolder holder, int position) {
 
         holder.itemView.setTag(position);
 
-        bodyPart temp = parts.get(position) ;
+        BodyPart temp = parts.get(position) ;
 
         holder.txtName.setText(temp.getName());
         holder.picView.setImageResource(temp.getPic());

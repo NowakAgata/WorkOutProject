@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -32,9 +31,8 @@ public class Logging_activity extends AppCompatActivity {
     String PREFERENCES_TEXT_LOGGED = "text" ;
     SharedPreferences prefs ;
 
-    public static List<user> userList;
+    public static List<User> userList;
     String TAG = "Ludzie z bazy ";
-    private FirebaseDatabase mDatabase ;
     static public DatabaseReference refUsers;
 
 
@@ -46,8 +44,8 @@ public class Logging_activity extends AppCompatActivity {
         logEditTxt = findViewById(R.id.loginEditTxt);
         passEditTxt = findViewById(R.id.passwordEditTxt);
         userList = new ArrayList<>();
-        mDatabase = FirebaseDatabase.getInstance();
-        refUsers = mDatabase.getReference().child("users");
+
+        refUsers = ApplicationClass.mDatabase.getReference().child("users");
 
         refUsers.addValueEventListener(new ValueEventListener() {
             @Override
@@ -55,7 +53,7 @@ public class Logging_activity extends AppCompatActivity {
 
                 userList.clear();
                 for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
-                    user currentUser = userSnapshot.getValue(user.class);
+                    User currentUser = userSnapshot.getValue(User.class);
                     userList.add(currentUser);
                 }
             }
@@ -80,12 +78,12 @@ public class Logging_activity extends AppCompatActivity {
             setLoggedUser(login);
             finish();
         } else {
-            Toast.makeText(this, "There is no such user or the password is wrong.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "There is no such User or the password is wrong.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean validData(String login, String password) {
-        for(user currentUser : userList) {
+        for(User currentUser : userList) {
             if(currentUser.getLogin().equals(login)){
                 if(currentUser.getPassword().equals(password))
                     return true;
@@ -95,7 +93,7 @@ public class Logging_activity extends AppCompatActivity {
     }
 
     public void registerButton(View view) {
-        Intent i = new Intent(getApplicationContext(), new_user.class);
+        Intent i = new Intent(getApplicationContext(), NewUserActivity.class);
         startActivityForResult(i, NEW_USER_ACTIVITY);
     }
 
@@ -104,6 +102,9 @@ public class Logging_activity extends AppCompatActivity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(PREFERENCES_TEXT_LOGGED, value);
         editor.apply();
+
+        MainActivity.isLogged = true ;
+        MainActivity.login = value ;
     }
 
     @Override

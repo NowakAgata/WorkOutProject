@@ -11,7 +11,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class one_part_exercises_list extends AppCompatActivity {
+public class ListOfOnePartExercisesActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     OnepartExerciseAdapter bodypartsAdapter ;
@@ -21,6 +21,7 @@ public class one_part_exercises_list extends AppCompatActivity {
     int flag ;
     String part;
     String selectedWorkoutName ;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,9 @@ public class one_part_exercises_list extends AppCompatActivity {
             case " Wszystkie        ":
                 temp = ApplicationClass.workoutsList;
                 break ;
+            case " Cardio           ":
+                temp = ApplicationClass.cardio;
+                break;
             default:
                 temp = ApplicationClass.workoutsList;
                 break;
@@ -78,11 +82,11 @@ public class one_part_exercises_list extends AppCompatActivity {
         Workout w = temp.get(position);
         selectedWorkoutName = w.getName();
         if(flag == 1){
-            Intent i = new Intent(getApplicationContext(), training_workout_details_activity.class);
+            Intent i = new Intent(getApplicationContext(), TrainingWorkoutDetailsActivity.class);
             startActivityForResult(i, 1);
         } else{
             String ekstra = selectedWorkoutName+";"+part;
-            Intent i = new Intent(getApplicationContext(), workout_view_activity.class);
+            Intent i = new Intent(getApplicationContext(), WorkoutViewActivity.class);
             i.putExtra("WORKOUT",ekstra);
             startActivity(i);
         }
